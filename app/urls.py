@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.index),
     path('settings', views.settings),
     path('add_record', views.addRecord),
-    path('delete_record', views.deleteRecord)
+    path('delete_record', views.deleteRecord),
 ]
