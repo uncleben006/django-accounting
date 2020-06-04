@@ -8,14 +8,15 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    # 若要使用 ModelForm，直接 import 並且實例化
-    # initial 可以讓屬性帶入預設值
-    record_form = RecordForm(initial={'balance_type': '支出', 'category': '1'})
 
     # request 會自帶 user 屬性
-    user  = request.user
+    user = request.user
 
-    records = Record.objects.filter()
+    # 若要使用 ModelForm，直接 import 並且實例化
+    # initial 可以讓屬性帶入預設值
+    record_form = RecordForm(initial={'balance_type': '支出', 'category': '1', 'user': user})
+
+    records = Record.objects.filter(user=user)
     income_list = [record.cash for record in records if record.balance_type == '收入']
     outcome_list = [record.cash for record in records if record.balance_type == '支出']
     income = sum(income_list) if len(income_list) != 0 else 0
