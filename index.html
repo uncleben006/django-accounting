@@ -69,7 +69,6 @@
               <th>分類</th>
               <th>金額</th>
               <th>收/支</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -80,13 +79,6 @@
             <td>{{ record.category }}</td>
             <td>{{ record.cash }}</td>
             <td>{{ record.balance_type }}</td>
-            <td>
-              <form method="post" action="/delete_record">
-                {% csrf_token %}
-                <input type="hidden" value="{{ record.id }}" name="delete_val">
-                <input type="submit" class="btn" value="刪除">
-              </form>
-            </td>
           </tr>
           {% endfor %}
           </tbody>
