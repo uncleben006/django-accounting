@@ -77,6 +77,15 @@
                 </tr>
               </thead>
               <tbody>
+                {% for record in  records %}
+                <tr>
+                  <td>{{record.date | date:"Y-m-d"}}</td>
+                  <td>{{record.description}}</td>
+                  <td>{{record.category}}</td>
+                  <td>{{record.cash}}</td>
+                  <td>{{record.balance_type}}</td>
+                </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
